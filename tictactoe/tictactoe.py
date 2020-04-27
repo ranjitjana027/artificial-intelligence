@@ -114,20 +114,20 @@ def minimax(board):
     if terminal(board):
         return None
     if player(board)==X:
-        v=-100
+        v=-math.inf
         best_action=None
         for action in actions(board):
-            new_v=min_value(result(board,action))
+            new_v=min_value(result(board,action),-100,100)
             if new_v>v:
                 v=new_v
                 #print(v)
                 best_action=action
         return best_action
     elif player(board) == O:
-        v = 100
+        v = math.inf
         best_action = None
         for action in actions(board):
-            new_v = max_value(result(board, action))
+            new_v = max_value(result(board, action),-100,100)
             if new_v < v:
                 v = new_v
                 #print(v)
@@ -137,22 +137,30 @@ def minimax(board):
     #raise NotImplementedError
     
 
-def max_value(board):
+def max_value(board,alpha,beta):
     
     if terminal(board):
         return utility(board)
-    v=-100
+    v=-math.inf
     for action in actions(board):
-        v=max(v,min_value(result(board,action)))
+        new_v=min_value(result(board,action),alpha,beta)
+        v=max(v,new_v)
+        alpha=max(alpha,new_v)
+        if beta <= alpha:
+            break
     return v 
 
-def min_value(board):
+def min_value(board,alpha,beta):
     
     if terminal(board):
         return utility(board)
-    v=100
+    v=math.inf
     for action in actions(board):
-        v=min(v,max_value(result(board,action)))
+        new_v = max_value(result(board, action),alpha,beta)
+        v=min(v,new_v)
+        beta=min(beta,new_v)
+        if alpha >= beta:
+            break
     return v 
 
 
