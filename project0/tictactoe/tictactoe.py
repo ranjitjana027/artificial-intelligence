@@ -27,7 +27,7 @@ def player(board):
         for j in range(3):
             if board[i][j]==EMPTY:
                 c+=1
-    if c%2==0:
+    if c%2==1:
         return X
     else:
         return O
