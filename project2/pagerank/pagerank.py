@@ -64,11 +64,11 @@ def transition_model(corpus, page, damping_factor):
         d=damping_factor
 
     nd=1-damping_factor
-    for page in corpus:
-        model[page]=nd*(1/len(d))
+    for p in corpus:
+        model[p]=nd*(1/len(corpus.keys()))
     for link in corpus[page]:
         model[link]=model.get(link,0)+(d/len(corpus[page]))
-    print(model)
+    #print(model)
     return model
     #raise NotImplementedError
 
@@ -82,7 +82,17 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    result={}
+    p=random.choices(list(corpus.keys()))[0]
+    result[p]=1
+    for _ in range(n-1):
+        dist=transition_model(corpus,p,damping_factor)
+        p=random.choices(population=list(dist.keys()),weights=list(dist.values()))[0]
+        result[p]=result.get(p,0)+1
+    for j in result.keys():
+        result[j] /= n
+    return result
+    #raise NotImplementedError
 
 
 def iterate_pagerank(corpus, damping_factor):
@@ -94,7 +104,28 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    d=damping_factor
+    nd=1-d
+    result={}
+    for p in corpus.keys():
+        result[p]=1/len(corpus.keys())
+    converge=False
+    while not converge:
+    #for _ in range(11):
+        td={}
+        for p in corpus.keys():
+            
+            for i in corpus[p]:
+                td[i]=td.get(i,nd/len(corpus))+d*result[p]/len(corpus[p])
+        converge=True
+        for k in td.keys():
+            diff=result[k]-td[k]
+            if not (diff<0.0011 and diff> -0.0011):
+                converge=False
+            result[k]=td[k]
+        #print(result)
+    return result 
+    #raise NotImplementedError
 
 
 if __name__ == "__main__":
