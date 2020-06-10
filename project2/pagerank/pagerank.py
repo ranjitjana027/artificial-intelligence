@@ -108,13 +108,15 @@ def iterate_pagerank(corpus, damping_factor):
     nd=1-d
     result={}
     for p in corpus.keys():
-        result[p]=1/len(corpus.keys())
+        result[p]=1/len(corpus)
     converge=False
     while not converge:
     #for _ in range(11):
         td={}
         for p in corpus.keys():
-            
+            numLinks=len(corpus[p])
+            if numLinks==0:
+                numLinks=len(corpus)
             for i in corpus[p]:
                 td[i]=td.get(i,nd/len(corpus))+d*result[p]/len(corpus[p])
         converge=True
@@ -124,7 +126,7 @@ def iterate_pagerank(corpus, damping_factor):
                 converge=False
             result[k]=td[k]
         #print(result)
-    return result 
+    return result
     #raise NotImplementedError
 
 
