@@ -69,7 +69,8 @@ def load_data(filename):
             evidence.append([int(row[0]), float(row[1]),int(row[2]), float(row[3]),
                              int(row[4]), float(row[5]),float(row[6]),float(row[7]),
                              float(row[8]),float(row[9]),month[row[10]], int(row[11]),
-                             int(row[12]), int(row[13]),int(row[14]),1 if row[15]=='Returning_Visitor' else 0,1 if row[16]=='TRUE' else 0])
+                             int(row[12]), int(row[13]),int(row[14]),1 if row[15]=='Returning_Visitor' else 0,
+                             1 if row[16]=='TRUE' else 0])
             labels.append(1 if row[17]=='TRUE' else 0)
     return (evidence,labels)
     #raise NotImplementedError
