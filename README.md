@@ -3,21 +3,21 @@
 
 #### Outline:
 -  Project 0:
-    - Degrees
-    - Tic-Tac-Toe
+    - [Degrees](project0/degrees)
+    - [Tic-Tac-Toe](project0/tictactoe)
 - Project 1:
-    - Knights
-    - Minesweeper
+    - [Knights](project1/knights)
+    - [Minesweeper](project1/minesweeper)
 - Project 2:
-    - PageRank
-    - Heredity
+    - [PageRank](project2/pagerank)
+    - [Heredity](project2/heredity)
 - Project 3:
-    - Crossword
+    - [Crossword](project3/crossword)
 - Project 4:
-    - Nim
-    - Shopping
+    - [Nim](project4/nim)
+    - [Shopping](project5/shopping)
 - Project 5:
-    - Traffic
+    - [Traffic](project5/traffic)
 - Project 6:
-    - Parser
-    - Questions
+    - [Parser](project6/parser)
+    - [Questions](project6/questions)
