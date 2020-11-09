@@ -15,7 +15,7 @@
     - [Crossword](project3/crossword)
 - Project 4:
     - [Nim](project4/nim)
-    - [Shopping](project5/shopping)
+    - [Shopping](project4/shopping)
 - Project 5:
     - [Traffic](project5/traffic)
 - Project 6:
